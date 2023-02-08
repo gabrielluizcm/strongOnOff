@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/x-icon" href="./favicon.ico">
+  <title>StrongOnOff</title>
+
+  <style>
+    * {
+      font-family: sans-serif;
+      font-size: 32px;
+      color: #e4e4e4;
+      margin: 0;
+      padding: 0;
+      transition: all ease-in-out 0.2s;
+    }
+
+    html,
+    body {
+      height: 100%;
+      width: 100%;
+      background-color: #010101;
+      overflow: hidden;
+    }
+
+    main {
+      height: 100%;
+      width: 100%;
+      z-index: 2;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    h1 {
+      font-weight: 100;
+    }
+
+    .background {
+      height: 100%;
+      width: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-image: url('bg.jpg');
+      opacity: 0;
+      z-index: 1;
+    }
+
+    .selector {
+      width: 60px;
+      height: 40px;
+      background-color: #9c9c9c;
+      border: #5b5b5b solid 1px;
+      border-radius: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: start;
+      justify-content: center;
+      padding: 0 5px;
+    }
+
+    .selectorBall {
+      background-color: #e4e4e4;
+      border-radius: 50%;
+      height: 30px;
+      width: 30px;
+      position: relative;
+      left: 0;
+      font-size: 12px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #5b5b5b;
+    }
+
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="background"></div>
+  <main>
+    <h1>Strong</h1>
+    <div class="selector">
+      <div class="selectorBall">off</div>
+    </div>
+  </main>
+
+  <script>
+    const bg = document.querySelector('.background');
+    const selector = document.querySelector('.selector');
+    const selectorBall = document.querySelector('.selectorBall');
+    const h1 = document.querySelector('h1');
+
+    let strong = false;
+
+    selector.addEventListener('click', () => {
+      if (strong) {
+        bg.style.opacity = '0';
+        h1.style.fontWeight = 100;
+        selector.style.backgroundColor = '#9c9c9c';
+        selector.style.borderColor = '#5b5b5b';
+        selectorBall.style.left = 0;
+        selectorBall.style.color = '#9c9c9c';
+        selectorBall.innerHTML = 'off';
+      }
+      else {
+        bg.style.opacity = '10%';
+        h1.style.fontWeight = 'bolder';
+        selector.style.backgroundColor = '#5f22d9';
+        selector.style.borderColor = '#2c016d';
+        selectorBall.style.left = '30px';
+        selectorBall.style.color = '#5f22d9';
+        selectorBall.innerHTML = 'on';
+      }
+
+      strong = !strong;
+    })
+  </script>
+</body>
+
+</html>
